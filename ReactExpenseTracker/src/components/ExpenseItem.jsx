@@ -1,35 +1,25 @@
+import './ExpenseItem.css'
+import { useState } from 'react'
 
-const ExpenseItem = () => {
 
-  
-    let date=new Date()
-    // let currDate=date.getDate();
-    // let currMonth=date.getMonth()+1
-    // let currYear=date.getFullYear()
-    // let obj={
-    //   currDate,
-    //   currMonth,
-    //   currYear
+const ExpenseItem = (props) => {
 
-    const month=date.toLocaleString('en-Us',{month:"long"})
-    const day=date.toLocaleString('en-us',{day:'2-digit'})
-    const year=date.toLocaleString('en-us',{year:'numeric'})
+  const [price,changePrice]=useState(props.price)
+  const month=props.date.toLocaleString('en-US',{month:'long'})
+  const day=props.date.toLocaleString('en-US',{day:'2-digit'})
+  const year=props.date.toLocaleString('en-US',{year:'numeric'})
 
-    function deleteItem(item){
-      console.log(`delete Item ${item}`)
-    }
+   const onPriceChange=()=>{
+    changePrice('100$')
+   }
   return (
-    <div>
-     <h1>Expense Item</h1>
-     <div>
-     <div className="expense-item">
-            <div className="expense-item__date">{day}/{month}/{year}</div>
-            <div><h3>smart watch</h3></div>
-            <div className="expense-item__amount">$100</div>
-            <button onClick={deleteItem}>Delete item</button>
-        </div>
-      </div>
-  
+    <div className='expenseDetails'>
+    <div className='expenseList'>
+    <h3>{month}/<span>{day}</span>/<span>{year}</span></h3>
+    <h3>{props.title}</h3>
+    <h3>{price}</h3>
+    <button onClick={onPriceChange}>change price</button>
+    </div>
     </div>
   )
 }
