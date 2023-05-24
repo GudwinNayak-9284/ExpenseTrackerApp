@@ -24,7 +24,7 @@ function App() {
   ]
 
   const expenseItems = [];
-  for (let i = 0; i < expenses.length; i++) {
+  for (let i = 0; i<expenses.length; i++) {
     expenseItems.push(
       <ExpenseItem
         key={i}
