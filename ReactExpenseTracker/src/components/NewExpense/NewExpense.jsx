@@ -1,6 +1,13 @@
 import React, { useState } from 'react'
 import './NewExpense.css'
-const NewExpense = () => {
+
+
+
+
+
+
+
+const NewExpense = (props) => {
   const [date,setDate]=useState('')
   const [price,setPrice]=useState('')
   const [category,setCategory]=useState('')
@@ -8,14 +15,15 @@ const NewExpense = () => {
   const submitHandler=(e) => {
     e.preventDefault()
     const expenseData={
-      date:new Date(date),
+      date,
       price,
       category
     }
-    console.log(expenseData)
+    // console.log(expenseData)
     setDate('')
     setPrice('')
     setCategory('')
+    props.onAddExpense(expenseData)
   }
 
 //  const[userInput,setUserInput]=useState({
@@ -68,7 +76,7 @@ const NewExpense = () => {
     console.log(expense)
     } */
   return (
-    <div>
+    <div className='expenseData'>
     {/* used onSubmit to get the form the data using vanilla js previously */}
     <form onSubmit={submitHandler}>
         {/* <input type="text" name="name" placeholder="Name" id='name'/> */}
